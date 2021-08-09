@@ -17,6 +17,7 @@ Code can be viewed as:
                 |-- campaign_handler.go
                 |-- campaign_helper.go
                 |-- campaign_models.go
+                |-- api_test.go
           |-- campaign_scheduler.go
           |-- build
           |-- Readme.md
@@ -59,3 +60,14 @@ There are 5 APIs implemented under campaign_scheduler.go
   3. /pixability/getGaps : This API route fetch the gaps in the campaigns. This API is a GET request with optional parameter of year and month. If no year is specified it will fetch gaps for current year and all months. If a month is specified then it will fetch gaps for that particular month.
   4. /pixability/getCategorizedGaps : This API route fetch the gaps in the campaigns arranged categorically. This API is a GET request with an optional parameter of year. If no year is specified it will fetch gaps for current year. It'll give data for all months categorized by year and month.
   5. /debug/getCampaigns : This API route is a debug endpoint just to see current campaigns running under the server. It has no parameters and it gives full wholesome view of the running campaigns.
+  
+## Scripts
+
+The clean script is used with build script to remove any temporary files generated. The build script is used to build binary for this server for MacOS. You can build it for linux as well by commenting the current build line and uncommenting the corrresponding line in build script.
+
+## Assumptions
+
+  1. The gaps are only calculated until the last day of the last campaign in a month.
+  2. Campaigns can be added in any order.
+  
+All other information should be self explanatory through the code.
