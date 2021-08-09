@@ -1,0 +1,14 @@
+#!/bin/bash
+
+go test ./...
+
+go tool cover -func=coverage.out
+
+./clean
+
+# Build the go binary, include race flag for checking race conditions
+echo -e "\nAll tests passed, building the code\n"
+go build -race -i -o campaign_scheduler #for Mac
+#BuildResult=$(env GOOS=linux GOARCH=amd64 go build -race -i -o campaign_scheduler) #for linux
+
+echo -e "Build Completed successfully\n"
